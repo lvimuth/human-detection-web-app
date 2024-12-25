@@ -4,6 +4,8 @@ An interactive and feature-rich React application that combines real-time object
 
 ---
 
+![Screenshot of the application](screenshots/screenshot.jpg)
+
 ## ✨ Features
 
 - **🔍 Real-Time Object Detection**: Utilizes TensorFlow.js's COCO-SSD model to detect objects in the webcam feed, highlighting:
