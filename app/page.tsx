@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Webcam from "react-webcam";
 import { Separator } from "@/components/ui/separator";
 import { ModeToggle } from "@/components/theme-toggle";
-import { FlipHorizontal } from "lucide-react";
+import { Camera, FlipHorizontal, PersonStanding, Video } from "lucide-react";
 
 type Props = {};
 
@@ -14,6 +14,8 @@ const HomePage = (props: Props) => {
 
   //State
   const [mirrored, setMirrored] = useState<boolean>(false);
+  const [isRecording, setIsRecording] = useState<boolean>(false);
+  const [autoRecordEnabled, setAutoRecordEnabled] = useState(false);
 
   return (
     <div className="flex h-screen">
@@ -48,18 +50,49 @@ const HomePage = (props: Props) => {
             </Button>
             <Separator className="my-2" />
           </div>
+
           {/* Middle Section */}
           <div className="flex flex-col gap-2">
-            <Separator />
-            <Button variant={'outline'} size={'icon'}></Button>
-            <Separator />
+            <Separator className="my-2" />
+            <Button
+              variant={"outline"}
+              size={"icon"}
+              onClick={userPromptScreenshot}
+            >
+              <Camera />
+            </Button>
+            <Button
+              variant={isRecording ? "destructive" : "outline"}
+              size={"icon"}
+              onClick={userPromptRecord}
+            >
+              <Video />
+            </Button>
+            <Separator className="my-2" />
+            <Button
+              variant={autoRecordEnabled ? "destructive" : "outline"}
+              onClick={toggleAutoRecord}
+            >
+              {autoRecordEnabled ? "show animation " : <PersonStanding />}
+            </Button>
           </div>
+
           {/* Bottom Section */}
           <div className="flex flex-col gap-2"></div>
         </div>
       </div>
     </div>
   );
+  //Handler function
+  function userPromptScreenshot() {}
+  function userPromptRecord() {}
+  function toggleAutoRecord() {
+    if (autoRecordEnabled) {
+      setAutoRecordEnabled(false);
+    } else {
+      setAutoRecordEnabled(true);
+    }
+  }
 };
 
 export default HomePage;
